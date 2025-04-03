@@ -1,0 +1,8 @@
+Placez les images suivantes dans ce répertoire :
+
+1. hero-bg.jpg - Image d'arrière-plan pour la section hero
+2. thomas-portrait.jpg - Portrait de Thomas Machard
+3. logo1.svg, logo2.svg, logo3.svg, logo4.svg - Logos des clients
+4. insta1.jpg, insta2.jpg, insta3.jpg - Publications Instagram
+
+Remplacez ces fichiers par vos propres images avec les mêmes noms pour personnaliser le site. 
