@@ -77,13 +77,13 @@ const Realisations: React.FC = () => {
           <div className="asymmetric-layout mb-20">
             <div>
               <ScrollReveal width="100%" delay={0.3}>
-                <h3 className="text-2xl md:text-3xl font-normal mb-6 tracking-wide">VIDÉOS</h3>
+                <h3 className="text-2xl md:text-3xl font-normal mb-6 tracking-wide">PHOTOS</h3>
                 <div className="h-px w-12 bg-accent-1 mb-8"></div>
                 <p className="text-light-gray mb-8 text-justify">
-                  Spécialiste des vidéos d'entreprise, documentaires et captations d'événements, je réalise des projets visuels captivants. Mon approche créative et technique permet de raconter des histoires authentiques qui suscitent l'émotion.
+                  Capturer l'instant parfait, c'est ma passion. Du portrait à l'événementiel, en passant par la photo de voyage, chaque image raconte une histoire unique. Mon style se caractérise par des compositions soignées et une attention particulière aux détails.
                 </p>
                 <motion.a 
-                  href="#videos" 
+                  href="#photos" 
                   className="inline-block px-8 py-3 border border-accent-1 text-accent-1 hover:bg-accent-1 hover:text-black transition-all duration-500"
                   whileHover={{ x: 10 }}
                   whileTap={{ scale: 0.98 }}

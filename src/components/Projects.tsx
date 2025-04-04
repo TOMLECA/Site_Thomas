@@ -17,12 +17,28 @@ const projectData = [
   },
   {
     id: 2,
+    title: "FRAGMENTS",
+    category: "SÉRIE PHOTO",
+    year: "2022",
+    image: "/images/photo-still.jpg",
+    link: "#project2"
+  },
+  {
+    id: 3,
     title: "RÉSONANCE",
     category: "DOCUMENTAIRE",
     year: "2023",
     image: "/images/video-still.jpg",
-    link: "#project2"
-  }
+    link: "#project3"
+  },
+  {
+    id: 4,
+    title: "PERSPECTIVE",
+    category: "VIDÉO PROMOTIONNELLE",
+    year: "2022",
+    image: "/images/photo-still.jpg",
+    link: "#project4"
+  },
 ];
 
 const Projects: React.FC = () => {

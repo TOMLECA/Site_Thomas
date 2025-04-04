@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    turbo: true
+    turbo: {
+      enabled: true
+    }
   }
-}
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig; 
