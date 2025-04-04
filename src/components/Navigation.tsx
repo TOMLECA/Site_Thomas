@@ -139,7 +139,7 @@ const Navigation: React.FC = () => {
         {/* Logo centré par rapport à la page */}
         <AnimatePresence>
           {!scrolled && (
-            <div className="flex justify-center items-center h-full w-full -mt-12">
+            <div className="flex justify-center items-center h-full w-full -mt-8 sm:-mt-12">
               <motion.div 
                 className="pointer-events-auto text-center"
                 initial={{ opacity: 0, y: -20 }}
@@ -153,12 +153,89 @@ const Navigation: React.FC = () => {
                     alt="Logo Thomas Machard" 
                     width={200} 
                     height={200} 
-                    className="w-[20vw] h-auto"
+                    className="w-[30vw] sm:w-[20vw] h-auto"
                     priority
                   />
                 </a>
               </motion.div>
             </div>
+          )}
+        </AnimatePresence>
+
+        {/* Menu burger pour mobile */}
+        <div className="fixed top-4 right-4 z-50 pointer-events-auto">
+          <button
+            onClick={toggleMenu}
+            className="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none"
+          >
+            <motion.span
+              className="block w-6 h-0.5 bg-white"
+              animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="block w-6 h-0.5 bg-white"
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="block w-6 h-0.5 bg-white"
+              animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </button>
+        </div>
+
+        {/* Menu latéral */}
+        <AnimatePresence>
+          {menuOpen && (
+            <>
+              <motion.div
+                className="fixed inset-0 bg-black/80 z-40"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onClick={toggleMenu}
+              />
+              <motion.div
+                className="fixed top-0 right-0 h-full w-64 bg-[rgb(var(--background-rgb))] z-50"
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              >
+                <div className="flex flex-col items-start p-6 space-y-6">
+                  <motion.a 
+                    href="#accueil" 
+                    className="menu-item text-xl sm:text-2xl tracking-wider hover:text-accent-1 transition-all"
+                    onClick={toggleMenu}
+                    whileHover={{ x: 5 }}
+                    variants={menuItemVariants}
+                  >
+                    ACCUEIL
+                  </motion.a>
+                  <motion.a 
+                    href="#videos" 
+                    className="menu-item text-xl sm:text-2xl tracking-wider hover:text-accent-1 transition-all"
+                    onClick={toggleMenu}
+                    whileHover={{ x: 5 }}
+                    variants={menuItemVariants}
+                  >
+                    VIDÉOS
+                  </motion.a>
+                  <motion.a 
+                    href="#contact" 
+                    className="menu-item text-xl sm:text-2xl tracking-wider hover:text-accent-1 transition-all"
+                    onClick={toggleMenu}
+                    whileHover={{ x: 5 }}
+                    variants={menuItemVariants}
+                  >
+                    CONTACT
+                  </motion.a>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </motion.nav>
@@ -168,73 +245,6 @@ const Navigation: React.FC = () => {
       
       {/* Scan lines */}
       <div className="scan-lines"></div>
-
-      {/* Menu latéral */}
-      <AnimatePresence>
-        {menuOpen && (
-          <>
-            {/* Overlay semi-transparent qui couvre tout l'écran */}
-            <motion.div 
-              className="fixed inset-0 bg-black/40 z-40"
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={overlayVariants}
-              onClick={toggleMenu}
-              style={{ 
-                willChange: "opacity",
-                backfaceVisibility: "hidden"
-              }}
-            />
-            
-            {/* Panneau de menu qui s'ouvre uniquement à gauche */}
-            <motion.div 
-              className="fixed top-0 left-0 bottom-0 w-64 md:w-80 bg-black z-50 flex flex-col pt-24"
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={menuVariants}
-              style={{ 
-                willChange: "transform",
-                backfaceVisibility: "hidden",
-                WebkitBackfaceVisibility: "hidden",
-                perspective: "1000px",
-                WebkitPerspective: "1000px"
-              }}
-            >
-              <div className="flex flex-col items-start pl-12 space-y-6">
-                <motion.a 
-                  href="#accueil" 
-                  className="menu-item text-2xl tracking-wider hover:text-accent-1 transition-all"
-                  onClick={toggleMenu}
-                  whileHover={{ x: 5 }}
-                  variants={menuItemVariants}
-                >
-                  ACCUEIL
-                </motion.a>
-                <motion.a 
-                  href="#videos" 
-                  className="menu-item text-2xl tracking-wider hover:text-accent-1 transition-all"
-                  onClick={toggleMenu}
-                  whileHover={{ x: 5 }}
-                  variants={menuItemVariants}
-                >
-                  VIDÉOS
-                </motion.a>
-                <motion.a 
-                  href="#contact" 
-                  className="menu-item text-2xl tracking-wider hover:text-accent-1 transition-all"
-                  onClick={toggleMenu}
-                  whileHover={{ x: 5 }}
-                  variants={menuItemVariants}
-                >
-                  CONTACT
-                </motion.a>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </>
   );
 };
